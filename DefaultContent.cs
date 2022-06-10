@@ -29,16 +29,23 @@ namespace bellatrix
             new Command("AT+SWVER", "Check Software Information"),
 
             // ADB Prompt Commands
-
+            // AOS 8
+            new Command("AT+CTSA=2,900,1450", "SM-G950U AOS-8 ADB Prompt"),
             // AOS 9
             new Command("AT+CTSA=2,750,1300", "SM-G950U AOS-9 ADB Prompt"),
-
+            new Command("AT+CTSA=2,900,2000", "SM-G970U AOS-9 ADB prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-G973U AOS-9 ADB prompt"),
+            new Command("AT+CTSA=2,800,1375", "SM-G970U AOS-9 ADB prompt"),
             //// AOS 10
             new Command("AT+CTSA=2,600,2100", "SM-G781U AOS-10 ADB Prompt"),
             new Command("AT+CTSA=2,600,2100", "SM-G981U AOS-10 ADB Prompt"),
             new Command("AT+CTSA=2,700,2100", "SM-G986U AOS-10 ADB Prompt"),
             new Command("AT+CTSA=2,800,2125", "SM-N986U AOS-10 ADB Prompt"),
             new Command("AT+CTSA=2,700,2100", "SM-G988U AOS-10 ADB Prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-G970U AOS-10 ADB prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-G973U AOS-10 ADB prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-N970U AOS-10 ADB prompt"),
+            new Command("AT+CTSA=2,900,2150", "SM-N976U AOS-10 ADB prompt"),
 
             //// AOS 11
             new Command("AT+CTSA=2,600,2100", "SM-G781U AOS-11 ADB Prompt"),
@@ -49,7 +56,10 @@ namespace bellatrix
             new Command("AT+CTSA=2,600,2100", "SM-G991U AOS-11 ADB Prompt"),
             new Command("AT+CTSA=2,700,2100", "SM-G996U AOS-11 ADB Prompt"),
             new Command("AT+CTSA=2,700,2100", "SM-G998U AOS-11 ADB Prompt"),
-
+            new Command("AT+CTSA=2,900,2000", "SM-G970U AOS-11 ADB prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-G973U AOS-11 ADB prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-N970U AOS-11 ADB prompt"),
+            new Command("AT+CTSA=2,900,2150", "SM-G976U AOS-11 ADB prompt"),
             //// AOS 12
             new Command("AT+CTSA=2,600,2100", "SM-G781U AOS-12 ADB Prompt"),
             new Command("AT+CTSA=2,600,2100", "SM-G981U AOS-12 ADB Prompt"),
@@ -58,7 +68,9 @@ namespace bellatrix
             new Command("AT+CTSA=2,700,2100", "SM-G988U AOS-12 ADB Prompt"),
             new Command("AT+CTSA=2,600,2100", "SM-G991U AOS-12 ADB Prompt"),
             new Command("AT+CTSA=2,700,2100", "SM-G996U AOS-12 ADB Prompt"),
-            new Command("AT+CTSA=2,700,2100", "SM-G998U AOS-12 ADB Prompt")
+            new Command("AT+CTSA=2,700,2100", "SM-G998U AOS-12 ADB Prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-G970U AOS-12 ADB prompt"),
+            new Command("AT+CTSA=2,900,2000", "SM-G973U AOS-12 ADB prompt"),
         };
 
         public List<Script> DefaultScripts = new()
@@ -90,7 +102,17 @@ namespace bellatrix
                 }),
 
             // Dialer Touch Scripts
-
+            // AOS 8
+            new Script("SM-G950U AOS=8 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,600,2100", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1700", "*", 1000),
+                    new Command("AT+CTSA=2,750,1700", "#", 1000),
+                    new Command("AT+CTSA=2,500,1700", "0", 1000),
+                    new Command("AT+CTSA=2,300,1700", "*", 1000),
+                    new Command("AT+CTSA=2,750,1700", "#", 1000)
+                }),
             // AOS 9 
             new Script("SM-G950U AOS-9 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
@@ -102,12 +124,83 @@ namespace bellatrix
                     new Command("AT+CTSA=2,300,1700", "*", 1000),
                     new Command("AT+CTSA=2,750,1700", "#", 1000)
                 }),
+            new Script("SM-G970U AOS=9 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,100,2100", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+            new Script("SM-G973U AOS=10 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,100,2100", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+            new Script("SM-N970U AOS=9 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,100,2200", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+
 
             // AOS 10
+            new Script("SM-G970U AOS=10 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,100,2100", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+            new Script("SM-G973U AOS=10 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,100,2100", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+            new Script("SM-N970U AOS=10 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,100,2200", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+             new Script("SM-N970U AOS=10 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,100,2200", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
             new Script("SM-G781U AOS-10 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
                 {
-                    new Command("AT+CTSA=2,600,2025", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,100,2300", "Emergency Dialer", 1000),
                     new Command("AT+CTSA=2,100,1825", "*", 1000),
                     new Command("AT+CTSA=2,750,1750", "#", 1000),
                     new Command("AT+CTSA=2,600,1825", "0", 1000),
@@ -117,7 +210,7 @@ namespace bellatrix
             new Script("SM-G981U AOS-10 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
                 {
-                    new Command("AT+CTSA=2,600,2025", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,100,2300", "Emergency Dialer", 1000),
                     new Command("AT+CTSA=2,100,1825", "*", 1000),
                     new Command("AT+CTSA=2,750,1750", "#", 1000),
                     new Command("AT+CTSA=2,600,1825", "0", 1000),
@@ -127,7 +220,7 @@ namespace bellatrix
             new Script("SM-G986U AOS-10 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
                 {
-                    new Command("AT+CTSA=2,600,2025", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,100,2300", "Emergency Dialer", 1000),
                     new Command("AT+CTSA=2,100,1825", "*", 1000),
                     new Command("AT+CTSA=2,900,1825", "#", 1000),
                     new Command("AT+CTSA=2,600,1825", "0", 1000),
@@ -137,7 +230,7 @@ namespace bellatrix
             new Script("SM-N986U AOS-10 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
                 {
-                    new Command("AT+CTSA=2,600,2025", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,100,2300", "Emergency Dialer", 1000),
                     new Command("AT+CTSA=2,100,1825", "*", 1000),
                     new Command("AT+CTSA=2,900,1825", "#", 1000),
                     new Command("AT+CTSA=2,600,1825", "0", 1000),
@@ -147,7 +240,7 @@ namespace bellatrix
             new Script("SM-G988U AOS-10 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
                 {
-                    new Command("AT+CTSA=2,600,2025", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,100,2300", "Emergency Dialer", 1000),
                     new Command("AT+CTSA=2,100,1825", "*", 1000),
                     new Command("AT+CTSA=2,900,1825", "#", 1000),
                     new Command("AT+CTSA=2,600,1825", "0", 1000),
@@ -156,6 +249,46 @@ namespace bellatrix
                 }),
 
             // AOS 11
+            new Script("SM-G970U AOS=11 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,600,1900", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+            new Script("SM-G973U AOS=11 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,600,1850", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+            new Script("SM-N970U AOS=11 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,600,1950", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
+            new Script("SM-N976U AOS=11 Dialer", "Opens the dialer menu from setup screen",
+                new BindingList<Command>
+                {
+                    new Command("AT+CTSA=2,600,1950", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000),
+                    new Command("AT+CTSA=2,600,1800", "0", 1000),
+                    new Command("AT+CTSA=2,300,1800", "*", 1000),
+                    new Command("AT+CTSA=2,900,1800", "#", 1000)
+                }),
             new Script("SM-G781U AOS-11 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
                 {
@@ -281,7 +414,7 @@ namespace bellatrix
             new Script("SM-G988U AOS-12 Dialer", "Opens the dialer menu from setup screen.",
                 new BindingList<Command>
                 {
-                    new Command("AT+CTSA=2,300,2025", "Emergency Dialer", 1000),
+                    new Command("AT+CTSA=2,600,2025", "Emergency Dialer", 1000),
                     new Command("AT+CTSA=2,300,1700", "*", 1000),
                     new Command("AT+CTSA=2,750,1700", "#", 1000),
                     new Command("AT+CTSA=2,500,1700", "0", 1000),
